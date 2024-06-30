@@ -138,7 +138,7 @@ def assign(
             domains.update(parse_domains(content=str(f.read())))
 
     # 爬取新站点列表
-    if not domains and overwrite:
+    if not domains or overwrite:
         candidates = crawl.collect_airport(
             channel="jichang_list",
             page_num=pages,
@@ -410,7 +410,6 @@ def aggregate(args: argparse.Namespace) -> None:
 
     # 清理工作空间
     workflow.cleanup(workspace, [])
-
 
 
 if __name__ == "__main__":
